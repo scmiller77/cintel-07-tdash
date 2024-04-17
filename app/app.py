@@ -5,11 +5,13 @@ from shiny import reactive
 from shiny.express import input, render, ui
 import palmerpenguins 
 
+#Load penguin data into a dataframe
 df = palmerpenguins.load_penguins()
 
-ui.page_opts(title="Penguins dashboard", fillable=True)
+#Title the page
+ui.page_opts(title="Scmiller77's Module 7 Penguins Dashboard", fillable=True)
 
-
+#Create a sidebar - with options to choose mass via slider and species via checkbox. Also include links
 with ui.sidebar(title="Filter controls"):
     ui.input_slider("mass", "Mass", 2000, 6000, 6000)
     ui.input_checkbox_group(
@@ -22,17 +24,17 @@ with ui.sidebar(title="Filter controls"):
     ui.h6("Links")
     ui.a(
         "GitHub Source",
-        href="https://github.com/denisecase/cintel-07-tdash",
+        href="https://github.com/scmiller77/cintel-07-tdash",
         target="_blank",
     )
     ui.a(
         "GitHub App",
-        href="https://denisecase.github.io/cintel-07-tdash/",
+        href="https://scmiller77.github.io/cintel-07-tdash/",
         target="_blank",
     )
     ui.a(
         "GitHub Issues",
-        href="https://github.com/denisecase/cintel-07-tdash/issues",
+        href="https://github.com/scmiller77/cintel-07-tdash/issues",
         target="_blank",
     )
     ui.a("PyShiny", href="https://shiny.posit.co/py/", target="_blank")
@@ -47,7 +49,7 @@ with ui.sidebar(title="Filter controls"):
         target="_blank",
     )
 
-
+# create the main UI layout - using columns
 with ui.layout_column_wrap(fill=False):
     with ui.value_box(showcase=icon_svg("earlybirds")):
         "Number of penguins"
@@ -85,7 +87,7 @@ with ui.layout_columns():
             )
 
     with ui.card(full_screen=True):
-        ui.card_header("Penguin da")
+        ui.card_header("Penguin data")
 
         @render.data_frame
         def summary_statistics():
